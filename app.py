@@ -78,6 +78,7 @@ elif choice == 'Live Camera':
         # Try different camera indices (0, 1, 2, etc.) to ensure compatibility
         camera = None
         for index in range(3):  # Try up to 3 different camera indices
+            st.write(f"Trying camera index: {index}")  # Debug message
             camera = cv2.VideoCapture(index)
             if camera.isOpened():
                 st.info(f"Camera {index} started. Capturing frames...")
