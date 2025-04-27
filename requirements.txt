@@ -1,7 +1,6 @@
-Python 3.8.20
-streamlit==1.12.0
+streamlit
 tensorflow==2.8.0
 keras==2.8.0
-pillow==8.4.0
-opencv-python-headless==4.5.5.64
+pillow
+opencv-python-headless
 
