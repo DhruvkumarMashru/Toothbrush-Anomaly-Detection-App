@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 import cv2
 from keras.models import load_model
-from keras.models import load_model
 from keras.layers import DepthwiseConv2D
 from utils import preprocess_image  # Ensure preprocess_image function is defined correctly
 
