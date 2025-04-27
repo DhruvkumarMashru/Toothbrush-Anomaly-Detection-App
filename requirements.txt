@@ -1,7 +1,6 @@
 protobuf==3.20.3
-numpy
+numpy==1.23.0  # Updated numpy version to satisfy streamlit requirements
 tensorflow==2.8.0
-numpy==1.21.6
 keras==2.8.0
 streamlit==1.44.1
 opencv-python-headless==4.11.0.86
