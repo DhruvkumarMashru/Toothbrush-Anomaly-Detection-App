@@ -2,12 +2,18 @@ import streamlit as st
 import numpy as np
 import cv2
 from keras.models import load_model
+from keras.models import load_model
+from keras.layers import DepthwiseConv2D
 from utils import preprocess_image  # Ensure preprocess_image function is defined correctly
 
 # Load the model
 def load_trained_model(model_path):
     model = load_model(model_path, compile=False)  # <-- Fixed here
     return model
+
+custom_objects = {
+    'DepthwiseConv2D': DepthwiseConv2D
+}
 
 # Load the model
 model = load_trained_model('model/keras_model.h5')
