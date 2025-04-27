@@ -75,12 +75,16 @@ elif choice == 'Live Camera':
         st.session_state.camera_running = run
 
     if run:
-        camera = cv2.VideoCapture(0)
+        # Try different camera indices (0, 1, 2, etc.) to ensure compatibility
+        camera = None
+        for index in range(3):  # Try up to 3 different camera indices
+            camera = cv2.VideoCapture(index)
+            if camera.isOpened():
+                st.info(f"Camera {index} started. Capturing frames...")
+                break
         if not camera.isOpened():
-            st.error("Failed to access camera.")
+            st.error("Failed to access any camera.")
         else:
-            st.info("Camera started. Capturing frames...")
-
             # Streamlit Image placeholder for the frame
             FRAME_WINDOW = st.image([])
 
