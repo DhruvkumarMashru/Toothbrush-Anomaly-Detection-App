@@ -1,57 +1,97 @@
-# Toothbrush-Anomaly-Detection-App
+# Toothbrush Anomaly Detection
 
-Overview
-This project is designed to detect anomalies in toothbrush images using machine learning. We utilize Teachable Machine to train an image classification model, which is then integrated into a Streamlit app for real-time anomaly detection. The app allows users to upload toothbrush images to detect any defects or issues. Additionally, a bonus feature includes a live camera feed that continuously detects anomalies without requiring image uploads.
+This project is designed to detect anomalies in toothbrush images using machine learning. It leverages a model trained with **Teachable Machine** and integrates it into a **Streamlit** application for real-time detection.
 
-Key Features
-Anomaly Detection Model: The model is trained using Teachable Machine, a simple no-code tool that enables easy training and export of machine learning models.
 
-Streamlit App: A user-friendly interface that allows image uploads and displays real-time predictions.
+## Key Features
 
-Live Camera Feed (Bonus): The app includes a live camera feed that continuously monitors toothbrushes for anomalies.
+- **Anomaly Detection Model**:  
+  Trained using Google's Teachable Machine — a no-code platform — for easy creation and export of machine learning models.
+  
+- **Streamlit Web App**:  
+  A user-friendly interface allowing users to upload toothbrush images and receive real-time predictions.
 
-Anomaly Classification: The model categorizes images as either 'Normal' or 'Defective' based on the trained dataset.
+- **Live Camera Feed (Bonus Feature)**:  
+  Integrated webcam functionality to continuously monitor toothbrushes for anomalies in real-time.
 
-Project Flow
-Model Training:
+- **Anomaly Classification**:  
+  The model classifies toothbrush images as either **'Normal'** or **'Defective'** based on visual defects like cracks, missing parts, or damaged bristles.
 
-A dataset of toothbrush images is used to train the anomaly detection model in Teachable Machine.
+---
 
-The model is trained to classify images into two categories: 'Normal' (defect-free) and 'Defective' (with issues like cracks, damage, or missing parts).
+## Project Flow
 
-Model Export:
+### 1. Model Training
+- A dataset of toothbrush images is used to train the model.
+- Images are classified into two categories:  
+  - **Normal**: Defect-free toothbrushes.  
+  - **Defective**: Toothbrushes with visible defects (e.g., cracks, missing bristles, damaged parts).
 
-After training, the model is exported and integrated into a Streamlit application for easy deployment and usage.
+### 2. Model Export
+- After training, the model is exported from Teachable Machine.
+- The exported model (`keras_model.h5`) is integrated into a Streamlit application for deployment.
 
-Streamlit Application:
+### 3. Streamlit Application
+- **Upload Image**:  
+  Users can upload a toothbrush image, and the model will predict its status.
 
-Upload Image: Users can upload an image of a toothbrush, and the model will predict if the toothbrush is normal or defective.
+- **Live Camera Feed**:  
+  Users can activate their webcam to scan toothbrushes continuously and detect anomalies in real-time.
 
-Live Camera Feed (Bonus Feature): Users can use their webcam to scan a toothbrush, and the app will predict any anomalies in real-time.
+---
 
-Installation
-Requirements
-Python 3.x
+## Installation Requirements
 
-Streamlit
+Make sure you have the following installed:
 
-Keras (for TensorFlow models)
+- Python 3.x
+- [Streamlit](https://streamlit.io/)
+- Keras (with TensorFlow backend)
+- OpenCV (for webcam integration)
+- Exported Teachable Machine model (`model/keras_model.h5`)
 
-OpenCV (for camera feed)
+You can install the required Python libraries with:
 
-Teachable Machine model file (model/keras_model.h5)
+```bash
+pip install streamlit keras tensorflow opencv-python
+```
 
-Model Description
-Training Method: The model is trained using Teachable Machine with a custom dataset of toothbrush images. It classifies images into two classes: Normal and Defective.
+---
 
-Data: A collection of normal toothbrush images and images with defects (e.g., cracks, missing bristles) was used to train the model.
+## Model Description
 
-Model Type: The model used is a convolutional neural network (CNN), which is well-suited for image classification tasks.
+- **Training Method**:  
+  Trained using **Teachable Machine** with a custom dataset of toothbrush images.
 
-Usage
-Upload Image: Select the "Upload Image" option to upload an image of a toothbrush and get a prediction.
+- **Data**:  
+  Two categories — **Normal** and **Defective** toothbrush images.
 
-The app will classify the image as either "Normal" or "Defective" based on the model's prediction.
+- **Model Type**:  
+  Convolutional Neural Network (CNN) — ideal for image classification tasks.
 
-Live Camera Feed: Click on the "Start Camera" checkbox to enable the live feed.
+---
 
+## Usage
+
+### Upload Image
+1. Launch the Streamlit app.
+2. Select the **Upload Image** option.
+3. Upload an image of a toothbrush.
+4. The app will display whether the toothbrush is **Normal** or **Defective**.
+
+### Live Camera Feed (Bonus)
+1. Launch the Streamlit app.
+2. Check the **Start Camera** option to enable your webcam.
+3. Show the toothbrush to the camera for real-time anomaly detection.
+
+---
+
+## Project Structure
+
+```bash
+├── app.py                    # Streamlit app file
+├── model/
+│   └── keras_model.h5         # Trained model exported from Teachable Machine
+├── README.md                  # Project documentation
+├── requirements.txt           # List of required packages (optional)
+```
