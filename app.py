@@ -77,12 +77,14 @@ elif choice == 'Live Camera (Bonus)':
                     st.error("Failed to grab frame from camera.")
                     break
 
-                # Convert frame to RGB
+                # Convert frame to RGB (OpenCV uses BGR, so we convert it to RGB)
                 frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 frame_resized = cv2.resize(frame_rgb, (224, 224))
 
-                # Use frame_resized directly for prediction
+                # Normalize and add batch dimension (necessary for model input)
                 img_array = np.expand_dims(frame_resized, axis=0) / 255.0
+
+                # Prediction using model
                 prediction = model.predict(img_array)
                 predicted_class = class_names[np.argmax(prediction)]
                 confidence = np.max(prediction)
@@ -97,8 +99,8 @@ elif choice == 'Live Camera (Bonus)':
                 label = f"{predicted_class} ({confidence*100:.2f}%)"
                 cv2.putText(frame_rgb, label, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
-                # Display the frame with prediction
-                FRAME_WINDOW.image(frame_rgb)
+                # Ensure the frame is in correct format for Streamlit
+                FRAME_WINDOW.image(frame_rgb, channels="RGB")  # Explicitly state RGB channels
 
                 # Display the message
                 st.write(message)
