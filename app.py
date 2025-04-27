@@ -43,7 +43,7 @@ class_names = ['Normal', 'Anomaly']
 # Streamlit UI
 st.title("🛡️ Anomaly Detector")
 
-menu = ['Upload Image', 'Live Camera (Bonus)']
+menu = ['Upload Image', 'Live Camera']
 choice = st.sidebar.selectbox('Select Mode', menu)
 
 # Upload Image Mode
@@ -63,7 +63,7 @@ if choice == 'Upload Image':
         st.write(message)
 
 # Live Camera Mode
-elif choice == 'Live Camera (Bonus)':
+elif choice == 'Live Camera':
     st.warning("Allow camera access and click Start!")
 
     if 'camera_running' not in st.session_state:
